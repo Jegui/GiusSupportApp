@@ -7,12 +7,13 @@
 
 import Foundation
 
-class GloveDetailViewModel {
+class GloveDetailViewModel: NSObject {
     var updateView: (()-> Void)?
     var distanceString: String = ""
     var accelerationString: String = ""
     
     init(updateView: (() -> Void)?) {
+        super.init()
         self.updateView = updateView
         NotificationCenter.default.addObserver(self, selector: #selector(self.dataChanged(notification:)), name: NSNotification.Name(rawValue: "Notify"), object: nil)
     }
@@ -22,10 +23,10 @@ class GloveDetailViewModel {
     }
     
     @objc private func dataChanged(notification: Notification) {
-        guard let object = notification.object else {
+        guard let object = notification.object as? String else {
             return
         }
-        distanceString = "\(object)"
+        distanceString = object.replacingOccurrences(of: ";", with: "\n")
         updateView?()
     }
 }

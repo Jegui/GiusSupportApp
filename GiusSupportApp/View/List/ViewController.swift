@@ -19,6 +19,8 @@ class ViewController: UIViewController {
     private var rssiArray = [NSNumber]()
     private var timer = Timer()
     
+    private var messageQueue: [String] = []
+    
     // UI
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var peripheralFoundLabel: UILabel!
@@ -104,21 +106,18 @@ class ViewController: UIViewController {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
             //Once connected, move to new view controller to manager incoming and outgoing data
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            
-            //        let detailViewController = storyboard.instantiateViewController(withIdentifier: "ConsoleViewController") as! ConsoleViewController
-            //        self.navigationController?.pushViewController(detailViewController, animated: true)
+//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//
+//                    let detailViewController = storyboard.instantiateViewController(withIdentifier: "ConsoleViewController") as! ConsoleViewController
+//                    self.navigationController?.pushViewController(detailViewController, animated: true)
             self.navigationController!.pushViewController(GloveDetailViewController(nibName: "GloveDetailViewController", bundle: nil), animated: true )
         })
     }
     func presentConsole() {
 //        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let vc = storyboard.instantiateViewController(withIdentifier: "ConsoleViewController")
-//        self.show(vc, sender: nil)
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        
-        //        let detailViewController = storyboard.instantiateViewController(withIdentifier: "ConsoleViewController") as! ConsoleViewController
-        //        self.navigationController?.pushViewController(detailViewController, animated: true)
+//        
+//        let detailViewController = storyboard.instantiateViewController(withIdentifier: "ConsoleViewController") as! ConsoleViewController
+//        self.navigationController?.pushViewController(detailViewController, animated: true)
         self.navigationController!.pushViewController(GloveDetailViewController(nibName: "GloveDetailViewController", bundle: nil), animated: true )
     }
 }
@@ -235,14 +234,18 @@ extension ViewController: CBPeripheralDelegate {
         var characteristicASCIIValue = NSString()
         
         guard characteristic == rxCharacteristic,
-                let characteristicValue = characteristic.value,
+              let characteristicValue = characteristic.value,
               let ASCIIstring = NSString(data: characteristicValue, encoding: String.Encoding.utf8.rawValue) else { return }
         
         characteristicASCIIValue = ASCIIstring
+        messageQueue.append(characteristicASCIIValue as String)
         
-        print("Value Recieved: \((characteristicASCIIValue as String))")
-        
-        NotificationCenter.default.post(name:NSNotification.Name(rawValue: "Notify"), object: "\((characteristicASCIIValue as String))")
+        if characteristicASCIIValue.contains("}") {
+            let completeMessage = "\((messageQueue.joined() + "\n" as String))"
+            print("Value Recieved: \((completeMessage as String))")
+            NotificationCenter.default.post(name:NSNotification.Name(rawValue: "Notify"), object:  completeMessage)
+            messageQueue.removeAll()
+        }
     }
     
     func peripheral(_ peripheral: CBPeripheral, didReadRSSI RSSI: NSNumber, error: Error?) {
