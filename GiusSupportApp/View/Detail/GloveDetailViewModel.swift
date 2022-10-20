@@ -26,7 +26,11 @@ class GloveDetailViewModel: NSObject {
         guard let object = notification.object as? String else {
             return
         }
-        distanceString = object.replacingOccurrences(of: ";", with: "\n")
+        if object.contains("Accl") {
+            accelerationString = object.replacingOccurrences(of: ";", with: "\n")
+        } else if object.contains("Distance") {
+            distanceString = object
+        }
         updateView?()
     }
 }
