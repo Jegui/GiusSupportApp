@@ -19,6 +19,7 @@
 		29DEAA1225D9A787002AECEC /* BlePeripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DEAA1125D9A787002AECEC /* BlePeripheral.swift */; };
 		68035C7428FCEB05003F5A64 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68035C7328FCEB05003F5A64 /* MainViewModel.swift */; };
 		68E39C5328FB411F00AB171C /* ViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E39C5228FB411F00AB171C /* ViewController+Extension.swift */; };
+		68E7CD1A2901BB10003FB52A /* HapticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E7CD192901BB10003FB52A /* HapticsService.swift */; };
 		68FFEEA628FBA6C4002471B1 /* GloveDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68FFEEA528FBA6C4002471B1 /* GloveDetailViewController.xib */; };
 		68FFEEA828FBA6D2002471B1 /* GloveDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68FFEEA728FBA6D2002471B1 /* GloveDetailViewModel.swift */; };
 		68FFEEAA28FBB0FB002471B1 /* GloveDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68FFEEA928FBB0FB002471B1 /* GloveDetailViewController.swift */; };
@@ -39,6 +40,7 @@
 		68035C7328FCEB05003F5A64 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		680C550328FCD813001EEB1F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		68E39C5228FB411F00AB171C /* ViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Extension.swift"; sourceTree = "<group>"; };
+		68E7CD192901BB10003FB52A /* HapticsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsService.swift; sourceTree = "<group>"; };
 		68FFEEA528FBA6C4002471B1 /* GloveDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GloveDetailViewController.xib; sourceTree = "<group>"; };
 		68FFEEA728FBA6D2002471B1 /* GloveDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GloveDetailViewModel.swift; sourceTree = "<group>"; };
 		68FFEEA928FBB0FB002471B1 /* GloveDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GloveDetailViewController.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 				68E39C5228FB411F00AB171C /* ViewController+Extension.swift */,
 				29A1DF4825CB1D7F000A9A84 /* AppDelegate.swift */,
 				29A1DF4A25CB1D7F000A9A84 /* SceneDelegate.swift */,
+				68E7CD182901BAFF003FB52A /* Service */,
 				2970B39225DF554A001CF3CF /* Model */,
 				2970B39525DF5570001CF3CF /* Components */,
 				2970B39325DF555D001CF3CF /* View */,
@@ -122,6 +125,14 @@
 				68035C7328FCEB05003F5A64 /* MainViewModel.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		68E7CD182901BAFF003FB52A /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				68E7CD192901BB10003FB52A /* HapticsService.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 		68FFEEA128FBA66D002471B1 /* Detail */ = {
@@ -225,6 +236,7 @@
 				68FFEEA828FBA6D2002471B1 /* GloveDetailViewModel.swift in Sources */,
 				29A1DF4D25CB1D7F000A9A84 /* ViewController.swift in Sources */,
 				29A1DF4925CB1D7F000A9A84 /* AppDelegate.swift in Sources */,
+				68E7CD1A2901BB10003FB52A /* HapticsService.swift in Sources */,
 				68FFEEAA28FBB0FB002471B1 /* GloveDetailViewController.swift in Sources */,
 				29A1DF6225CBA309000A9A84 /* CBUUIDs.swift in Sources */,
 				29A1DF7025CF0560000A9A84 /* ConsoleViewController.swift in Sources */,

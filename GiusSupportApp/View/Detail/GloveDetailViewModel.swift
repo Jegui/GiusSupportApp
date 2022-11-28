@@ -8,9 +8,31 @@
 import Foundation
 
 class GloveDetailViewModel: NSObject {
+    
+    let hapticsService = HapticsService.shared
+    
     var updateView: (()-> Void)?
     var distanceString: String = ""
     var accelerationString: String = ""
+    
+    private var distance: Int = 0 {
+        didSet {
+            var intensity: CGFloat = .zero
+            switch distance {
+            case 0...9:
+                intensity = 1
+            case 10...25:
+                intensity = 0.8
+            case  25...50:
+                intensity = 0.3
+            default:
+                intensity = 0
+            }
+            if intensity > 0 {
+                hapticsService.vibrate(for: .heavy, intensity: intensity)
+            }
+        }
+    }
     
     init(updateView: (() -> Void)?) {
         super.init()
@@ -30,6 +52,10 @@ class GloveDetailViewModel: NSObject {
             accelerationString = object.replacingOccurrences(of: ";", with: "\n")
         } else if object.contains("Distance") {
             distanceString = object
+            if let distanceString = object.split(separator: " ").last,
+               let distance = Int(distanceString.replacingOccurrences(of: "}\n", with: "")){
+                self.distance = distance
+            }
         }
         updateView?()
     }
