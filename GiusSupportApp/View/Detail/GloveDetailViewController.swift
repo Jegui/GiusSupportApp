@@ -7,9 +7,12 @@
 
 import UIKit
 
-class GloveDetailViewController: UIViewController {
+class GloveDetailViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var accelerationLabel: UILabel!
+    
+    @IBOutlet weak var phoneInput: UITextField!
+    @IBOutlet weak var addButton: UIButton!
     
     var viewModel: GloveDetailViewModel?
     
@@ -17,6 +20,7 @@ class GloveDetailViewController: UIViewController {
         super.viewDidLoad()
         viewModel = GloveDetailViewModel(updateView: nil)
         bindViewModel()
+        phoneInput.delegate = self
     }
     
     private func bindViewModel() {

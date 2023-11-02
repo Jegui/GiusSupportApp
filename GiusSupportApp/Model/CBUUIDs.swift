@@ -9,6 +9,8 @@ import Foundation
 import CoreBluetooth
 
 struct CBUUIDs{
+    
+    static let GIUS_device_UUID = "726E8E46-EE26-B44C-2650-D6548174E339"
 
     static let kBLEService_UUID = "6e400001-b5a3-f393-e0a9-e50e24dcca9e"
     static let kBLE_Characteristic_uuid_Tx = "6e400002-b5a3-f393-e0a9-e50e24dcca9e"

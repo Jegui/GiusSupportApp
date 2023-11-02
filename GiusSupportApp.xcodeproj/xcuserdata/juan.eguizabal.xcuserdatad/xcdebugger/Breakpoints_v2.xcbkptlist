@@ -7,17 +7,65 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "2154094E-BB7D-42E5-A2C9-79B6F1CD69D9"
+            uuid = "9026A1A2-2CBF-4AE7-B422-1B9459BAF183"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "GiusSupportApp/View/List/ViewController.swift"
+            filePath = "GiusSupportApp/View/Main/MainViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "111"
-            endingLineNumber = "111"
-            landmarkName = "delayedConnection()"
+            startingLineNumber = "175"
+            endingLineNumber = "175"
+            landmarkName = "peripheral(_:didUpdateValueFor:error:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0E15C591-EF6D-4D43-B00F-D9ECFBABF47A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GiusSupportApp/View/Main/MainViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "132"
+            endingLineNumber = "132"
+            landmarkName = "peripheral(_:didDiscoverServices:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "0E15C591-EF6D-4D43-B00F-D9ECFBABF47A - 3ce4c5acf589a03e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GiusSupportApp.MainViewModel.peripheral(_: __C.CBPeripheral, didDiscoverServices: Swift.Optional&lt;Swift.Error&gt;) -&gt; ()"
+                  moduleName = "GiusSupportApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/juan.eguizabal/GiusSupportApp/GiusSupportApp/View/Main/MainViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "132"
+                  endingLineNumber = "132"
+                  offsetFromSymbolStart = "432">
+               </Location>
+               <Location
+                  uuid = "0E15C591-EF6D-4D43-B00F-D9ECFBABF47A - 4c2b5f24b4471235"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.CBService) -&gt; Swift.Bool in GiusSupportApp.MainViewModel.peripheral(_: __C.CBPeripheral, didDiscoverServices: Swift.Optional&lt;Swift.Error&gt;) -&gt; ()"
+                  moduleName = "GiusSupportApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/juan.eguizabal/GiusSupportApp/GiusSupportApp/View/Main/MainViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "132"
+                  endingLineNumber = "132"
+                  offsetFromSymbolStart = "44">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

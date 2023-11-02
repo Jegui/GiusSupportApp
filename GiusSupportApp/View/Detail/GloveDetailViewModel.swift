@@ -6,14 +6,20 @@
 //
 
 import Foundation
+import UIKit
+import AVFoundation
+import CoreLocation
 
 class GloveDetailViewModel: NSObject {
     
     let hapticsService = HapticsService.shared
-    
+    let synthesizer = AVSpeechSynthesizer()
+    var locationManager = CLLocationManager()
     var updateView: (()-> Void)?
     var distanceString: String = ""
     var accelerationString: String = ""
+    
+    var locationString: String = ""
     
     private var distance: Int = 0 {
         didSet {
@@ -38,6 +44,12 @@ class GloveDetailViewModel: NSObject {
         super.init()
         self.updateView = updateView
         NotificationCenter.default.addObserver(self, selector: #selector(self.dataChanged(notification:)), name: NSNotification.Name(rawValue: "Notify"), object: nil)
+        locationManager.delegate = self
+           locationManager.desiredAccuracy = kCLLocationAccuracyBest
+           locationManager.requestAlwaysAuthorization()
+           if CLLocationManager.locationServicesEnabled(){
+               locationManager.startUpdatingLocation()
+           }
     }
     
     deinit {
@@ -57,6 +69,51 @@ class GloveDetailViewModel: NSObject {
                 self.distance = distance
             }
         }
+        if object.contains("HELP") {
+            let mPhoneNumber = "+542915341997";
+            let mMessage = "hello%20phone";
+            if let url = URL(string: "sms://" + mPhoneNumber + "&body="+mMessage) {
+                UIApplication.shared.open(url)
+            }
+        }
+        if object.contains("GPS") {
+            let utterance = AVSpeechUtterance(string: locationString)
+            utterance.voice = AVSpeechSynthesisVoice(language: "es-MX")
+            
+            
+            synthesizer.speak(utterance)
+        }
         updateView?()
     }
+}
+
+extension GloveDetailViewModel: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let userLocation :CLLocation = locations[0] as CLLocation
+
+        print("user latitude = \(userLocation.coordinate.latitude)")
+        print("user longitude = \(userLocation.coordinate.longitude)")
+
+      
+        let geocoder = CLGeocoder()
+        geocoder.reverseGeocodeLocation(userLocation) { (placemarks, error) in
+            if (error != nil){
+                print("error in reverseGeocode")
+            }
+            let placemark = placemarks! as [CLPlacemark]
+            if placemark.count>0{
+                let placemark = placemarks![0]
+                print(placemark.locality!)
+                print(placemark.administrativeArea!)
+                print(placemark.country!)
+
+                self.locationString = "\(placemark.locality!), \(placemark.administrativeArea!), \(placemark.country!)"
+            }
+        }
+
+    }
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("Error \(error)")
+    }
+
 }

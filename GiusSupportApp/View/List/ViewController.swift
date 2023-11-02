@@ -154,20 +154,25 @@ extension ViewController: CBCentralManagerDelegate {
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         print("Function: \(#function),Line: \(#line)")
         
-        bluefruitPeripheral = peripheral
-        
-        if peripheralArray.contains(peripheral) {
-            print("Duplicate Found.")
-        } else {
+//
+//
+//        if peripheralArray.contains(peripheral) {
+//            print("Duplicate Found.")
+//        } else {
+//            peripheralArray.append(peripheral)
+//            rssiArray.append(RSSI)
+//        }
+//
+        if peripheral.identifier.uuidString == CBUUIDs.GIUS_device_UUID {
+            bluefruitPeripheral = peripheral
             peripheralArray.append(peripheral)
+            peripheralFoundLabel.text = "Peripherals Found: \(peripheralArray.count)"
             rssiArray.append(RSSI)
+            bluefruitPeripheral.delegate = self
+            
+            print("Peripheral Discovered: \(peripheral)")
         }
-        
-        peripheralFoundLabel.text = "Peripherals Found: \(peripheralArray.count)"
-        
-        bluefruitPeripheral.delegate = self
-        
-        print("Peripheral Discovered: \(peripheral)")
+      
         
         self.tableView.reloadData()
     }

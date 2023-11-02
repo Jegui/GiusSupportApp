@@ -12,7 +12,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GloveDetailViewController" customModule="GiusSupportApp" customModuleProvider="target">
             <connections>
                 <outlet property="accelerationLabel" destination="mhm-lG-bQy" id="HZ4-8p-zv4"/>
+                <outlet property="addButton" destination="DnN-T9-lFl" id="sc0-2G-GHN"/>
                 <outlet property="distanceLabel" destination="ebB-Pl-gqh" id="pCE-dm-gma"/>
+                <outlet property="phoneInput" destination="CIn-e0-eRn" id="K2y-rg-N7f"/>
                 <outlet property="view" destination="iN0-l3-epB" id="Eir-qt-3cE"/>
             </connections>
         </placeholder>
@@ -33,16 +35,34 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Emergency number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CIn-e0-eRn">
+                    <rect key="frame" x="47" y="147" width="227" height="34"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="227" id="joz-c9-pAb"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DnN-T9-lFl">
+                    <rect key="frame" x="301" y="147" width="55" height="35"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="filled" title="Set"/>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemGray6Color"/>
             <constraints>
                 <constraint firstItem="ebB-Pl-gqh" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="B8M-yH-Ado"/>
+                <constraint firstItem="DnN-T9-lFl" firstAttribute="leading" secondItem="CIn-e0-eRn" secondAttribute="trailing" constant="27" id="UdR-9Q-wsb"/>
                 <constraint firstItem="mhm-lG-bQy" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Z78-5n-DhD"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="DnN-T9-lFl" secondAttribute="trailing" constant="34" id="b40-Xh-SJ3"/>
                 <constraint firstItem="mhm-lG-bQy" firstAttribute="top" secondItem="ebB-Pl-gqh" secondAttribute="bottom" constant="55" id="d9R-Re-HfC"/>
                 <constraint firstItem="mhm-lG-bQy" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="gNu-vk-MZu"/>
+                <constraint firstItem="CIn-e0-eRn" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="47" id="n1c-gE-Ifc"/>
+                <constraint firstItem="DnN-T9-lFl" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="100" id="sOV-QW-5WL"/>
+                <constraint firstItem="CIn-e0-eRn" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="100" id="zw5-7b-ExL"/>
             </constraints>
-            <point key="canvasLocation" x="132" y="-11"/>
+            <point key="canvasLocation" x="130.76923076923077" y="-11.374407582938389"/>
         </view>
     </objects>
     <resources>
